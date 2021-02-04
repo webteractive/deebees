@@ -18,6 +18,8 @@ if [ "$MACHINE" == "UNKNOWN" ]; then
     exit 1
 fi
 
+cd "$(dirname "$0")"
+
 # Load Deebee .env
 if [ -f .env ]
 then

@@ -2,7 +2,7 @@ version: "3"
 services:
   mysql57:
     image: "mysql:8.0"
-    container_name: "wbt_mysql57"
+    container_name: "deebee_mysql57"
     ports:
       - "3357:3306"
     environment:
@@ -17,7 +17,7 @@ services:
   mysql80:
     image: "mysql:8.0"
     command: --default-authentication-plugin=mysql_native_password
-    container_name: "wbt_mysql80"
+    container_name: "deebee_mysql80"
     ports:
       - "3380:3306"
     environment:
@@ -31,7 +31,7 @@ services:
 
   redis:
     image: "redis:alpine"
-    container_name: "wbt_memcached"
+    container_name: "deebee_memcached"
     ports:
       - "6397:6379"
     volumes:
@@ -41,7 +41,7 @@ services:
 
   memcached:
     image: "memcached:alpine"
-    container_name: "wbt_redis"
+    container_name: "deebee_redis"
     ports:
       - "11222:11211"
     networks:
