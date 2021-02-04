@@ -8,8 +8,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "secret"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_USER: "user"
-      MYSQL_PASSWORD: "secret"
     volumes:
       - "mysql57:/var/lib/mysql"
       - "./config/:/etc/mysql/conf.d"
@@ -25,8 +23,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "secret"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_USER: "user"
-      MYSQL_PASSWORD: "secret"
     volumes:
       - "mysql80:/var/lib/mysql"
       - "./config/:/etc/mysql/conf.d"
