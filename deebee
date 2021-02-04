@@ -59,6 +59,8 @@ function deebee_is_not_running {
     exit 1
 }
 
+# Impelement this https://gist.github.com/spalladino/6d981f7b33f6e0afe6bb
+
 if [ $# -gt 0 ]; then
     # Initiate a MySQL CLI terminal session within the "mysql" container...
     if [ "$1" == "mysql57" ]; then
