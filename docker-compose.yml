@@ -1,0 +1,63 @@
+version: "3"
+services:
+  mysql57:
+    image: "mysql:8.0"
+    container_name: "wbt_mysql57"
+    ports:
+      - "3357:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "secret"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "secret"
+    volumes:
+      - "mysql57:/var/lib/mysql"
+      - "./config/:/etc/mysql/conf.d"
+    networks:
+      - network
+
+  mysql80:
+    image: "mysql:8.0"
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: "wbt_mysql80"
+    ports:
+      - "3380:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "secret"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "secret"
+    volumes:
+      - "mysql80:/var/lib/mysql"
+      - "./config/:/etc/mysql/conf.d"
+    networks:
+      - network
+
+  redis:
+    image: "redis:alpine"
+    container_name: "wbt_memcached"
+    ports:
+      - "6397:6379"
+    volumes:
+      - "redis:/data"
+    networks:
+      - network
+
+  memcached:
+    image: "memcached:alpine"
+    container_name: "wbt_redis"
+    ports:
+      - "11222:11211"
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge
+volumes:
+  mysql80:
+    driver: local
+  mysql57:
+    driver: local
+  redis:
+    driver: local
