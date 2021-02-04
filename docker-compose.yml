@@ -4,9 +4,9 @@ services:
     image: "mysql:8.0"
     container_name: "deebee_mysql57"
     ports:
-      - "3357:3306"
+      - "${MYSQL57_FORWARD_PORT:-3357}:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: "secret"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_PASSWORD:-secret}"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     volumes:
       - "mysql57:/var/lib/mysql"
@@ -19,9 +19,9 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     container_name: "deebee_mysql80"
     ports:
-      - "3380:3306"
+      - "${MYSQL80_FORWARD_PORT:-3380}:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: "secret"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_PASSWORD:-secret}"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     volumes:
       - "mysql80:/var/lib/mysql"
@@ -33,7 +33,7 @@ services:
     image: "redis:alpine"
     container_name: "deebee_memcached"
     ports:
-      - "6397:6379"
+      - "${REDIS_FORWARD_PORT:-6397}:6379"
     volumes:
       - "redis:/data"
     networks:
@@ -43,7 +43,7 @@ services:
     image: "memcached:alpine"
     container_name: "deebee_redis"
     ports:
-      - "11222:11211"
+      - "${MEMCACHED_FORWARD_PORT:-11222}:11211"
     networks:
       - network
 
